@@ -1,0 +1,215 @@
+{% extends 'layout.html' %}
+{% block body %}
+  {%load static%}
+
+  <script type="text/javascript" src="{% static 'account/js/three.min.js'%}">
+  </script>
+	<!-- <script src="js/three.min.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/ThreeCSG.js'%}">
+  </script>
+	<!-- <script src="js/ThreeCSG.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/TrackballControls.js'%}">
+  </script>
+	<!-- <script src="js/TrackballControls.js"></script> -->
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'account/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'account/css/style.css'%}">
+
+	<!-- <script src="js/jquery.min.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/jquery.min.js'%}">
+  </script>
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/bootstrap.min.js'%}">
+  </script>
+
+  <!-- <script src="js/vergil_water_shader.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/vergil_water_shader.js'%}">
+  </script>
+
+  <!-- <script src="js/shaders/CopyShader.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/shaders/CopyShader.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/EffectComposer.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/EffectComposer.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/RenderPass.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/RenderPass.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/MaskPass.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/MaskPass.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/ShaderPass.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/ShaderPass.js'%}">
+  </script>
+  <!-- alert reponse -->
+  <div id="alert">
+    <div id="close"></div>
+    <div id="alert_contenu">
+    </div>
+  </div>
+  <!-- ligne du nom du projet -->
+  <div class="row"  style="width:50%; margin-left:25%">
+    <div class="col-md-5">
+      <label class="control-label">Project Name</label>
+    </div>
+    <div class="col-md-6">
+      <input type="text" class="form-control" id="Project_name">
+    </div>
+  </div>
+  <br>
+  <!-- partie de l'interface 3D -->
+	<div id="canvas" style=" margin-left:13%">
+  </div>
+	<div style=" width:120%; height: 30%; margin-left:15%">
+    <!-- ligne des deux formulaires -->
+		<div class="row" style="margin-left:20px;">
+      <!-- colonne pour le form du Pipe -->
+      <div class="col-sm-3">
+        <div class="row">
+  				<a class="control-label" style="margin-left:10px;">Pipe Dimensions:</a>
+  			</div><br>
+        <div class="row">
+          <div class="col-md-5">
+            <label class="control-label">Pipe name</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" class="form-control" id="Pipe_name">
+          </div>
+        </div><br>
+  			<div class="row">
+  				<div class="col-md-5">
+  					<label class="control-label">Pipe length</label>
+  				</div>
+  				<div class="col-md-6">
+  					<input type="text" class="form-control" id="Pipe_length" value="100">
+  				</div>
+  			</div><br>
+  			<div class="row">
+  				<div class="col-md-5">
+  					<label class="control-label">Pipe inner diameter</label>
+  				</div>
+  				<div class="col-md-6">
+  					<input type="text" class="form-control" id="Pipe_inner_diameter" value="1">
+  				</div>
+  			</div><br>
+  			<div class="row">
+  				<div class="col-md-5">
+  					<label class="control-label">Pipe outer diameter</label>
+  				</div>
+  				<div class="col-md-6">
+  					<input type="text" class="form-control" id="Pipe_outer_diameter" value="2">
+  				</div>
+  			</div><br>
+  			<div class="row">
+  				<div class="col-md-5">
+  					<label class="control-label">Pipe color</label>
+  				</div>
+  				<div class="col-md-6">
+  					<input type="color" class="form-control" id="Pipe_color" value="#3B0B24">
+  				</div>
+  			</div>
+  			<br>
+  			<div class="row">
+  				<div class="col-md-4">
+  					<button type="button" class="btn btn-primary" onclick="generatepipe()">generate</button>
+  				</div>
+  			</div>
+      </div>
+      <!-- colone pour la ligne separatrice -->
+      <div class="col-sm-3" style=" width:5%; margin-left:-3%">
+          <div class="ligne_verticale" ></div>
+      </div>
+      <!-- colonne pour le form du Parallelepiped -->
+      <div class="col-sm-3">
+      			<div class="row">
+      				<a class="control-label" style="margin-left:0px;">Parallelepiped Dimensions:</a>
+      			</div><br>
+
+            <div class="row">
+              <div class="col-md-5">
+                <label class="control-label">Parallelepiped Name</label>
+              </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="Parallelepiped_n">
+              </div>
+            </div><br>
+
+      			<div class="row">
+      				<div class="col-md-5">
+      					<label class="control-label">Parallelepiped length</label>
+      				</div>
+      				<div class="col-md-6">
+      					<input type="text" class="form-control" id="Parallelepiped_z" value="10">
+      				</div>
+      			</div><br>
+
+
+      			<div class="row">
+      				<div class="col-md-5">
+      					<label class="control-label">Parallelepiped color</label>
+      				</div>
+      				<div class="col-md-6">
+      					<input type="color" class="form-control" id="Parallelepiped_color" value="#AEB404">
+      				</div>
+      			</div>
+            <br><br><br><br><br><br>
+      			<div class="row">
+      				<div class="col-md-4">
+      					<button type="button" class="btn btn-primary" onclick="generatecube()">generate</button>
+      				</div>
+      			</div>
+      </div>
+	  </div>
+    <br>
+    <!-- ligne du tableau du Parallelepiped-->
+    <div class="row">
+      <div class="col-md-5">
+        <label class="control-label">Parallelepiped table:</label>
+      </div>
+    </div>
+    <div class="row" style="margin-left:150px;">
+      <table class="table" id="tableau" style="margin-left:-10%; width:50%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>length</th>
+            <th>color</th>
+          </tr>
+        </thead>
+        <tbody id="ParallelepipedTab">
+        </tbody>
+      </table>
+		</div>
+    <!-- ligne du tableau du pipe-->
+    <div class="row">
+      <div class="col-md-5">
+        <label class="control-label">Pipe table:</label>
+      </div>
+    </div>
+    <div class="row" style="margin-left:150px;">
+      <table class="table" style="margin-left:-10%; width:50%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>length</th>
+            <th>color</th>
+          </tr>
+        </thead>
+        <tbody id="PipeTab">
+        </tbody>
+      </table>
+    </div>
+    <!-- ligne du boutton save -->
+    <div class="row" style="margin-left:22.5%;">
+      <!-- <input type="button" class="btn btn-primary" value="Save" onclick=""> -->
+      <!-- <form action="/save_project/name/4/color" method="post"> -->
+        <!-- <input type="hidden" name="_method" value="SAVE"> -->
+        <input type="submit" value="Save" id="btn-save" class="btn btn-primary">
+      <!-- </form> -->
+    </div>
+  </div>
+  <script type="text/javascript" src="{% static 'account/js/___app.js'%}">
+  </script>
+	 <!-- <script src="js/___app.js"></script> -->
+
+{% endblock %}

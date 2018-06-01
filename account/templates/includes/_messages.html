@@ -1,0 +1,8 @@
+<!-- cette partie est utilisé lorsque on passe le message dans l'url càd lorsqu'on retourne une page html (render_template('...', error=error)) -->
+{% if error %}
+  <div class="alert alert-danger">{{error}}</div>
+{% endif %}
+
+{% if msg %}
+  <div class="alert alert-success">{{msg}}</div>
+{% endif %}

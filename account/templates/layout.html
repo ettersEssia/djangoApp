@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SVetical</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <!-- pour les fichiers js et css j'ai telechargé bootstrap 3.3.7 et j'ai pris les dossiers qui sont ds le dossiers dist -->
+    {%load static%}
+    <link rel="icon" type="image/png" href="{% static 'account/image/logo.png'%}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/list.css'%}">
+  </head>
+  <body>
+    {% include 'includes/_navbar.html' %}
+    <div class="container">
+      {% include 'includes/_messages.html' %}
+      {% block body %}{% endblock %}
+    </div>
+
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="{% static 'account/js/bootstrap.min.js'%}">
+    </script>
+    <script type="text/javascript" src="{% static 'account/js/jquery.min.js'%}">
+    </script>
+    <script type="text/javascript" src="{% static 'account/js/list.js'%}"></script>
+  </body>
+</html>

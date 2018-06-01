@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block body %}
+  {%load static%}
+  <script type="text/javascript" src="{% static 'account/js/three.min.js'%}">
+  </script>
+	<!-- <script src="js/three.min.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/ThreeCSG.js'%}">
+  </script>
+	<!-- <script src="js/ThreeCSG.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/TrackballControls.js'%}">
+  </script>
+	<!-- <script src="js/TrackballControls.js"></script> -->
+	<!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'account/css/bootstrap.min.css'%}">
+  <link rel="stylesheet" type="text/css" href="{% static 'account/css/style.css'%}">
+
+	<!-- <script src="js/jquery.min.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/jquery.min.js'%}">
+  </script>
+  <!-- <script src="js/bootstrap.min.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/bootstrap.min.js'%}">
+  </script>
+
+  <!-- <script src="js/vergil_water_shader.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/vergil_water_shader.js'%}">
+  </script>
+
+  <!-- <script src="js/shaders/CopyShader.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/shaders/CopyShader.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/EffectComposer.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/EffectComposer.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/RenderPass.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/RenderPass.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/MaskPass.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/MaskPass.js'%}">
+  </script>
+  <!-- <script src="js/postprocessing/ShaderPass.js"></script> -->
+  <script type="text/javascript" src="{% static 'account/js/postprocessing/ShaderPass.js'%}">
+  </script>
+
+  <div id="alert">
+    <div id="close"></div>
+    <div id="alert_contenu"></div>
+  </div>
+  <div class="row">
+    <!-- tree menu contenalt l'arboressence des projets -->
+    <div class="col-xs-2" style=" width:30%">
+      {% include 'includes/_treeMenu.html' %}
+    </div>
+    <div class="col-xs-8" style="margin-left:-10%; width: 80%">
+      {% include 'includes/_listContenu.html' %}
+    </div>
+  </div>
+  <br>
+  <script type="text/javascript" src="{% static 'account/js/___app.js'%}">
+  </script>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+<!-- <div class="container" style="margin-top:30px;"> -->
+  <!-- <div class="row"> -->
+    <div id="navListProject" >
+      <ul id="tree2">
+        {% for projectName, composants in projectDetails.items %}
+          <li><a onclick="rempliTabProject('{{projectName}}');">{{ projectName }}</a>
+            <ul>
+              {% for compName, compParam in composants.items %}
+                <li>
+                  <a href="#" onclick="rempliTabParam(    '['
+                                                        + '{{compParam.name}}'
+                                                        + ']['
+                                                        + '{{compParam.length}}'
+                                                        + ']['
+                                                        + '{{compParam.inDiam}}'
+                                                        + ']['
+                                                        + '{{compParam.outDiam}}'
+                                                        + ']['
+                                                        + '{{compParam.color}}'
+                                                        + ']'
+                                                      );">{{ compName }}
+                  </a>
+                  <!-- <ul>
+                    <li>length:         {{ valueC.length }} </li>
+                    <li>inner Diameter: {{ valueC.inDiam }} </li>
+                    <li>out Diameter:   {{ valueC.outDiam }}</li>
+                    <li>color:          {{ valueC.color }}  </li>
+                  </ul> -->
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  <!-- </div> -->
+<!-- </div> -->

@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  {% if user.is_authenticated %}
+    <h1>home</h1>
+  {% else %}
+    <h1>is logout</h1>
+  {% endif %}
+{% endblock %}

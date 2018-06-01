@@ -1,0 +1,28 @@
+<div class="panel panel-default">
+  <div class="panel-heading" >
+    <a class="btn btn-default btn-sm" href="http://localhost:8000/account/new_project/" type="button">Add_project</a>
+  </div>
+  {% for projectName, composants in projectDetails.items %}
+   <div class="panel-heading">
+     <h3><i>{{projectName}}</i></h3>
+    <button type="button" class="btn btn-default btn-sm" onclick="deleteProject('{{projectName}}')"style="width:10%; margin-left:90%">
+       <span class="glyphicon glyphicon-remove"></span> Delete
+   </button>
+   <button type="button" class="btn btn-default btn-sm" style="margin-left:-21%; width:10%">
+     <span class="glyphicon glyphicon-pencil"></span> Edit
+   </button>
+   </div>
+    {% for compName, compParam in composants.items %}
+      <h4>{{compName}}</h4>
+      <ul class="list-group">
+         <li class="list-group-item"><b>length:         </b>{{compParam.length}}</li>
+         <li class="list-group-item"><b>color:          </b> {{compParam.color}}</li>
+         {% if compParam.type == "PIPE"%}
+            <li class="list-group-item"><b>inner_diameter: </b>{{compParam.inDiam}}</li>
+            <li class="list-group-item"><b>out_diameter:   </b>{{compParam.outDiam}}</li>
+         {% endif %}
+         <li class="list-group-item"><b>type:          </b> {{compParam.type}}</li>
+      </ul>
+    {% endfor %}
+   {% endfor %}
+</div>
